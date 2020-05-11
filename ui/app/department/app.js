@@ -1,30 +1,46 @@
-
 'use strict';
 
-angular.module('department', ['httpErrorInterceptor', 'bahmni.department', 'bahmni.common.routeErrorHandler', 'ngSanitize',
-    'bahmni.common.uiHelper', 'bahmni.common.config', 'bahmni.common.orders', 'bahmni.common.i18n', 'pascalprecht.translate',
-    'ngCookies', 'angularFileUpload', 'bahmni.common.services']);
-angular.module('department')
-    .config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$compileProvider', '$bahmniTranslateProvider',
-        function ($stateProvider, $httpProvider, $urlRouterProvider, $compileProvider, $bahmniTranslateProvider) {
-            $urlRouterProvider.otherwise('/create');
-            $stateProvider.state('department', {
+angular
+    .module('bahmni.department')
+    .config(['$urlRouterProvider', '$stateProvider', '$httpProvider', '$bahmniTranslateProvider', '$compileProvider',
+        function ($urlRouterProvider, $stateProvider, $httpProvider, $bahmniTranslateProvider, $compileProvider) {
+            $httpProvider.defaults.headers.common['Disable-WWW-Authenticate'] = true;
+            $urlRouterProvider.otherwise('/list');
+        // @if DEBUG='production'
+            $compileProvider.debugInfoEnabled(false);
+        // @endif
+
+        // @if DEBUG='development'
+            $compileProvider.debugInfoEnabled(true);
+        // @endif
+            $stateProvider
+            .state('department', {
+                url: '/department',
                 abstract: true,
                 views: {
+                    // 'additional-header': {
+                    //     templateUrl: 'views/appointmentsHeader.html',
+                    //     controller: 'AppointmentsHeaderController'
+                    // },
                     'departmentContent': {
-                        template: '<div class="opd-wrapper appointments-page-wrapper">' +
-                        '<div ui-view="content" class="opd-content-wrapper appointments-content-wrapper"></div>' +
+                        template: '<div class="opd-wrapper department-page-wrapper">' +
+                        '<div ui-view="content" class="opd-content-wrapper department-content-wrapper"></div>' +
                         '</div>'
                     }
                 },
+                data: {
+                    backLinks: []
+                },
                 resolve: {
-                    initialize: 'initialization'
+                    initializeConfig: function (initialization, $stateParams) {
+                        return initialization($stateParams.appName);
+                    }
                 }
             }).state('department.create', {
                 url: '/create',
                 views: {
                     'content': {
-                        templateUrl: 'views/departmentsCreate.html',
+                        templateUrl: 'views/departmentsCeate.html',
                         controller: 'DepartmentCreateController'
                     }
                 }
@@ -37,11 +53,6 @@ angular.module('department')
                     }
                 }
             });
-            $httpProvider.defaults.headers.common['Disable-WWW-Authenticate'] = true;
-            $bahmniTranslateProvider.init({app: 'depmodule', shouldMerge: true});
-        }
-    ]).run(['$rootScope', '$templateCache', function ($rootScope, $templateCache) {
-        // Disable caching view template partials
-        console.log("h");
-        $rootScope.$on('$viewContentLoaded', $templateCache.removeAll);
-    }]);
+
+            $bahmniTranslateProvider.init({app: 'department', shouldMerge: true});
+        }]);
