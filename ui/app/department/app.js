@@ -26,7 +26,7 @@ angular.module('bahmni.depmodule')
                     'content': {
                         templateUrl: 'views/departmentsCreate.html',
                         controller: 'DepartmentCreateController'
-                    } 
+                    }
                 }
             }).state('departments.list', {
                 url: '/list',
@@ -34,7 +34,7 @@ angular.module('bahmni.depmodule')
                     'content': {
                         templateUrl: 'views/departmentsList.html',
                         controller: 'DepartmentListController'
-                    } 
+                    }
                 }
             });
             $httpProvider.defaults.headers.common['Disable-WWW-Authenticate'] = true;
