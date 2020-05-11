@@ -27,7 +27,7 @@ angular.module('bahmni.depmodule')
                         templateUrl: 'views/departmentsCreate.html',
                         controller: 'DepartmentCreateController'
                     } 
-                },
+                }
             }).state('departments.list', {
                 url: '/list',
                 views: {
@@ -35,7 +35,7 @@ angular.module('bahmni.depmodule')
                         templateUrl: 'views/departmentsList.html',
                         controller: 'DepartmentListController'
                     } 
-                },
+                }
             });
             $httpProvider.defaults.headers.common['Disable-WWW-Authenticate'] = true;
             $bahmniTranslateProvider.init({app: 'depmodule', shouldMerge: true});
