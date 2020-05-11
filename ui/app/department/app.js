@@ -1,23 +1,16 @@
+
 'use strict';
 
-angular
-    .module('bahmni.depmodule')
-    .config(['$urlRouterProvider', '$stateProvider', '$httpProvider', '$bahmniTranslateProvider', '$compileProvider',
-        function ($urlRouterProvider, $stateProvider, $httpProvider, $bahmniTranslateProvider, $compileProvider) {
-            $httpProvider.defaults.headers.common['Disable-WWW-Authenticate'] = true;
-            $urlRouterProvider.otherwise('/home/manage/summary');
-            $urlRouterProvider.when('/home/manage', '/home/manage/summary');
-        // @if DEBUG='production'
-            $compileProvider.debugInfoEnabled(false);
-        // @endif
-
-        // @if DEBUG='development'
-            $compileProvider.debugInfoEnabled(true);
-        // @endif
-            $stateProvider
-            .state('departments', {
-                url: '/departments',
+angular.module('bahmni.depmodule', ['httpErrorInterceptor', 'bahmni.admin', 'bahmni.common.routeErrorHandler', 'ngSanitize',
+    'bahmni.common.uiHelper', 'bahmni.common.config', 'bahmni.common.orders', 'bahmni.common.i18n', 'pascalprecht.translate',
+    'ngCookies', 'angularFileUpload', 'bahmni.common.services']);
+angular.module('bahmni.depmodule')
+    .config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$compileProvider', '$bahmniTranslateProvider',
+        function ($stateProvider, $httpProvider, $urlRouterProvider, $compileProvider, $bahmniTranslateProvider) {
+            $urlRouterProvider.otherwise('/dashboard');
+            $stateProvider.state('departments', {
                 abstract: true,
+                // template: '<ui-view/>',
                 views: {
                     // 'additional-header': {
                     //     templateUrl: 'views/appointmentsHeader.html',
@@ -29,39 +22,34 @@ angular
                         '</div>'
                     }
                 },
-                data: {
-                    backLinks: []
-                },
                 resolve: {
-                    initializeConfig: function (initialization, $stateParams) {
-                        return initialization($stateParams.appName);
-                    }
+                    initialize: 'initialization'
                 }
-            }).state('department.list', {
+            }).state('departments.create', {
+                url: '/create',
+                // templateUrl: 'views/departmentsCreate.html',
+                // controller: 'DepartmentCreateController',
+                views: {
+                    'content': {
+                        templateUrl: 'views/departmentsCreate.html',
+                        controller: 'DepartmentCreateController'
+                    } 
+                },
+            }).state('departments.list', {
                 url: '/list',
+                // templateUrl: 'views/departmentsList.html',
+                // controller: 'DepartmentListController',
                 views: {
                     'content': {
                         templateUrl: 'views/departmentsList.html',
                         controller: 'DepartmentListController'
-                    }
-                }
-            }).state('departments.create', {
-                url: '/create',
-                views: {
-                    'content': {
-                        templateUrl: 'views/departmentsCreate.html',
-                        controller: 'DepartmentCreateController'
-                    }
-                }
-            }).state('departments.edit', {
-                url: '/:uuid',
-                views: {
-                    'content@admin': {
-                        templateUrl: 'views/departmentsCreate.html',
-                        controller: 'DepartmentCreateController'
-                    }
-                }
+                    } 
+                },
             });
-
-            $bahmniTranslateProvider.init({app: 'appointments', shouldMerge: true});
-        }]);
+            $httpProvider.defaults.headers.common['Disable-WWW-Authenticate'] = true;
+            $bahmniTranslateProvider.init({app: 'depmodule', shouldMerge: true});
+        }
+    ]).run(['$rootScope', '$templateCache', function ($rootScope, $templateCache) {
+        // Disable caching view template partials
+        $rootScope.$on('$viewContentLoaded', $templateCache.removeAll);
+    }]);

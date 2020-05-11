@@ -1,20 +1,16 @@
 'use strict';
 
-angular.module('bahmni.depmodule').factory('initialization',
-    ['authenticator', 'appService', 'spinner', 'configurations',
-        function (authenticator, appService, spinner, configurations) {
-            return function () {
-                var loadConfigPromise = function () {
-                    return configurations.load([]);
-                };
-                var initApp = function () {
-                    return appService.initApp('depmodule', {'app': true, 'extension': true});
-                };
+angular.module('bahmni.depmodule')
+.factory('initialization', ['$rootScope', '$q', 'appService', 'spinner',
+    function ($rootScope, $q, appService, spinner) {
+        var initApp = function () {
+            return appService.initApp('depmodule');
+        };
 
-                return spinner.forPromise(authenticator.authenticateUser()
-                    .then(initApp)
-                    .then(loadConfigPromise));
-            };
-        }
-    ]
-);
+        var checkPrivilege = function () {
+            return appService.checkPrivilege("Manage Department");
+        };
+
+        return spinner.forPromise(initApp().then(checkPrivilege));
+    }
+]);
