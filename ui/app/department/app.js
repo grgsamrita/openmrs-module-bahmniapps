@@ -1,14 +1,14 @@
 
 'use strict';
 
-angular.module('bahmni.depmodule', ['httpErrorInterceptor', 'bahmni.admin', 'bahmni.common.routeErrorHandler', 'ngSanitize',
+angular.module('department', ['httpErrorInterceptor', 'bahmni.department', 'bahmni.common.routeErrorHandler', 'ngSanitize',
     'bahmni.common.uiHelper', 'bahmni.common.config', 'bahmni.common.orders', 'bahmni.common.i18n', 'pascalprecht.translate',
     'ngCookies', 'angularFileUpload', 'bahmni.common.services']);
-angular.module('bahmni.depmodule')
+angular.module('department')
     .config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$compileProvider', '$bahmniTranslateProvider',
         function ($stateProvider, $httpProvider, $urlRouterProvider, $compileProvider, $bahmniTranslateProvider) {
             $urlRouterProvider.otherwise('/create');
-            $stateProvider.state('departments', {
+            $stateProvider.state('department', {
                 abstract: true,
                 views: {
                     'departmentContent': {
@@ -20,7 +20,7 @@ angular.module('bahmni.depmodule')
                 resolve: {
                     initialize: 'initialization'
                 }
-            }).state('departments.create', {
+            }).state('department.create', {
                 url: '/create',
                 views: {
                     'content': {
@@ -28,7 +28,7 @@ angular.module('bahmni.depmodule')
                         controller: 'DepartmentCreateController'
                     }
                 }
-            }).state('departments.list', {
+            }).state('department.list', {
                 url: '/list',
                 views: {
                     'content': {
@@ -42,5 +42,6 @@ angular.module('bahmni.depmodule')
         }
     ]).run(['$rootScope', '$templateCache', function ($rootScope, $templateCache) {
         // Disable caching view template partials
+        console.log("h");
         $rootScope.$on('$viewContentLoaded', $templateCache.removeAll);
     }]);

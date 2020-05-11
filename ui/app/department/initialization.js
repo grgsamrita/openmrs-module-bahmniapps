@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('bahmni.depmodule')
+angular.module('bahmni.department')
 .factory('initialization', ['$rootScope', '$q', 'appService', 'spinner',
     function ($rootScope, $q, appService, spinner) {
         var initApp = function () {
-            return appService.initApp('depmodule');
+            return appService.initApp('department');
         };
 
         var checkPrivilege = function () {
