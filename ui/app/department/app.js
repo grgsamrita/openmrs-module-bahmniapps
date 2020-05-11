@@ -7,15 +7,10 @@ angular.module('bahmni.depmodule', ['httpErrorInterceptor', 'bahmni.admin', 'bah
 angular.module('bahmni.depmodule')
     .config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$compileProvider', '$bahmniTranslateProvider',
         function ($stateProvider, $httpProvider, $urlRouterProvider, $compileProvider, $bahmniTranslateProvider) {
-            $urlRouterProvider.otherwise('/dashboard');
+            $urlRouterProvider.otherwise('/create');
             $stateProvider.state('departments', {
                 abstract: true,
-                // template: '<ui-view/>',
                 views: {
-                    // 'additional-header': {
-                    //     templateUrl: 'views/appointmentsHeader.html',
-                    //     controller: 'AppointmentsHeaderController'
-                    // },
                     'departmentContent': {
                         template: '<div class="opd-wrapper appointments-page-wrapper">' +
                         '<div ui-view="content" class="opd-content-wrapper appointments-content-wrapper"></div>' +
@@ -27,8 +22,6 @@ angular.module('bahmni.depmodule')
                 }
             }).state('departments.create', {
                 url: '/create',
-                // templateUrl: 'views/departmentsCreate.html',
-                // controller: 'DepartmentCreateController',
                 views: {
                     'content': {
                         templateUrl: 'views/departmentsCreate.html',
@@ -37,8 +30,6 @@ angular.module('bahmni.depmodule')
                 },
             }).state('departments.list', {
                 url: '/list',
-                // templateUrl: 'views/departmentsList.html',
-                // controller: 'DepartmentListController',
                 views: {
                     'content': {
                         templateUrl: 'views/departmentsList.html',
