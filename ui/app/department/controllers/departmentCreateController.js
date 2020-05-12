@@ -25,17 +25,18 @@ angular.module('bahmni.department')
         function ($scope, $state, $location, spinner, $stateParams, departmentService) {
             $scope.department = {};
             var depId = $stateParams.uuid;
-            if (!depId) {
-                $state.go("department.list.view");
-            } else {
-                $scope.getDepartment(depId);            
-            }            
 
-            $scope.getDepartment = function (id) {
+            var getDepartment = function (depId) {
                 departmentService.getDepartmentById($stateParams.uuid).then(function (response) {
                     $scope.department = response.data;
                 });
             };
+
+            if (!depId) {
+                $state.go("department.list.view");
+            } else {
+                getDepartment(depId);            
+            }
             
             $scope.updateDepartment = function () {
                 departmentService.update($scope.department).then(function (response) {
