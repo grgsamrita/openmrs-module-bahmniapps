@@ -7,7 +7,7 @@
 //     'bahmni.common.orders', 'bahmni.common.appFramework', 'bahmni.common.logging', 'ui.router', 'angularFileUpload']);
 
 
-var app = angular.module('bahmni.demo', []);
+var app = angular.module('bahmni.department', []);
     app.controller('PopupDemoController', ['$scope',    function($scope) {
             $scope.open = function() {
             	alert("hi");
