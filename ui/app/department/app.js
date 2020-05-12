@@ -4,8 +4,8 @@ angular.module('department', ['httpErrorInterceptor', 'bahmni.department', 'bahm
     'bahmni.common.uiHelper', 'bahmni.common.config', 'bahmni.common.orders',
     'ngCookies', , 'bahmni.common.services']);
 angular.module('department')
-    .config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$compileProvider', '$bahmniTranslateProvider',
-        function ($stateProvider, $httpProvider, $urlRouterProvider, $compileProvider, $bahmniTranslateProvider) {
+    .config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$compileProvider',
+        function ($stateProvider, $httpProvider, $urlRouterProvider, $compileProvider) {
             $urlRouterProvider.otherwise('/list');
             $stateProvider.state('department', {
                 abstract: true,
@@ -30,7 +30,7 @@ angular.module('department')
                 }
             });
             $httpProvider.defaults.headers.common['Disable-WWW-Authenticate'] = true;
-            $bahmniTranslateProvider.init({app: 'department', shouldMerge: true});
+            // $bahmniTranslateProvider.init({app: 'department', shouldMerge: true});
         }
     ]).run(['$rootScope', '$templateCache', function ($rootScope, $templateCache) {
         // Disable caching view template partials
