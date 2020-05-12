@@ -5,6 +5,6 @@ angular.module('bahmni.department')
         function ($scope, $state, $location, spinner) {
             
             $scope.navigateToAdd = function() {
-                $state.go("department.list.departments");
+                $state.go("department.create");
             }
         }]);

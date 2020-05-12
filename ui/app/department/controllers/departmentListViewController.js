@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bahmni.department')
-    .controller('DepartmentListController', ['$scope', '$state', '$location', 'spinner', 'departmentService',
+    .controller('DepartmentListViewController', ['$scope', '$state', '$location', 'spinner', 'departmentService',
         function ($scope, $state, $location, spinner, departmentService) {
             
             var init = function () {
