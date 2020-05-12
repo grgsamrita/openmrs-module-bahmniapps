@@ -18,16 +18,22 @@
         <link rel="stylesheet" href="../components/ng-tags-input/ng-tags-input.min.css"/>
         <!-- endbuild -->
     </head>
-    <body>
-        <div ng-app="department" class="bahmni-department">
-            <!-- <div ui-view="additional-header"></div> -->
-            <!-- <div ng-include src="'../common/ui-helper/messages.html'"></div> -->
-            <div ui-view></div>
+    <body ng-app="department">
+        <div ng-include src="'../common/ui-helper/header.html'"></div>
+        <div ng-include src="'../common/ui-helper/messages.html'"></div>
+        <div class="opd-wrapper">
+            <div ui-view id="view-content" class="opd-content-wrapper"></div>
         </div>
+        <!-- <div ng-app="bahmni.department" class="bahmni-department">
+            <div ui-view="additional-header"></div>
+            <div ng-include src="'../common/ui-helper/messages.html'"></div>
+            <div ui-view="departmentContent"></div>
+        </div> -->
         <!-- <body ng-app="bahmni.department">
         <div ng-controller="PopupDemoController">
-<a ng-click="open()">Open Popup</a>
-</div> -->
+            <a ng-click="open()">Open Popup</a>
+        </div> -->
+
         <script src="../components/lodash/dist/lodash.min.js"></script>
         <script src="../components/jquery/jquery.min.js"></script>
         <script src="../lib/jquery/jquery-ui-1.10.4.custom.min.js"></script>
@@ -60,7 +66,6 @@
         <script src="../common/util/httpErrorInterceptor.js"></script>
         <script src="../common/util/arrayUtil.js"></script>
         <script src="../common/util/dateUtil.js"></script>
-        <script src="../common/constants.js"></script>
         <script src="../common/models/init.js"></script>
 
         <script src="../common/auth/init.js"></script>
@@ -108,9 +113,11 @@
         <script src="init.js"></script>
         <script src="initialization.js"></script>
         <script src="app.js"></script>
+        <script src="constants.js"></script>
+        <script src="services/departmentService.js"></script>
         <script src="controllers/departmentCreateController.js"></script>
         <script src="controllers/departmentListController.js"></script>
-        <!-- <script src="services/departmentService.js"></script> -->
+        
 
         <script src="../common/orders/init.js"></script>
         <script src="../common/orders/services/orderTypeService.js"></script>

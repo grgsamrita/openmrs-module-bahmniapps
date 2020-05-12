@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('department', ['httpErrorInterceptor', 'bahmni.department', 'bahmni.common.routeErrorHandler', 'ngSanitize',
-    'bahmni.common.uiHelper', 'bahmni.common.config', 'bahmni.common.orders', 'bahmni.common.i18n',
-    'ngCookies', , 'bahmni.common.services']);
+    'bahmni.common.uiHelper', 'bahmni.common.orders', 'bahmni.common.i18n', 'bahmni.common.services']);
 angular.module('department')
     .config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$compileProvider', '$bahmniTranslateProvider',
         function ($stateProvider, $httpProvider, $urlRouterProvider, $compileProvider, $bahmniTranslateProvider) {
@@ -15,7 +14,7 @@ angular.module('department')
                 }
             }).state('department.list', {
                 url: '/list',
-                templateUrl: 'views/departmentsList.html',
+                templateUrl: 'views/manage.html',
                 controller: 'DepartmentListController',
                 data: {
                     backLinks: [{label: "Home", accessKey: "h", url: "../home/", icon: "fa-home"}],
@@ -28,6 +27,19 @@ angular.module('department')
                 data: {
                     backLinks: [{label: "Home", state: "department.list", icon: "fa-home"}]
                 }
+            }).state('department.list.departments', {
+                url: '/list/departments',
+                views: {
+                    'content@viewDepartments': {
+                        templateUrl: 'views/departmentsList.html',
+                        controller: 'DepartmentListViewController'
+                    }
+                }
+                // resolve: {
+                //     appointmentsContext: function (appointmentsInitialization) {
+                //         return appointmentsInitialization();
+                //     }
+                // }
             });
             $httpProvider.defaults.headers.common['Disable-WWW-Authenticate'] = true;
 
