@@ -1,17 +1,10 @@
 'use strict';
 
 angular.module('bahmni.department')
-    .controller('DepartmentListController', ['$scope', '$state', '$location', 'spinner', 'departmentService',
-        function ($scope, $state, $location, spinner, departmentService) {
+    .controller('DepartmentListController', ['$scope', '$state', '$location', 'spinner',
+        function ($scope, $state, $location, spinner) {
             
-            var init = function () {
-                var params = {};
-                return departmentService.getAllDepartments(params).then(function (response) {
-                    $scope.departments = response.data;
-                });
-                console.log("department create");
-                return "hi";
-            };
-
-            return spinner.forPromise(init());
+            $scope.navigateToAdd = function() {
+                $state.go("department.list.departments");
+            }
         }]);

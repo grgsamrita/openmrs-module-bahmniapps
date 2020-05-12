@@ -1,9 +1,7 @@
 
 <div class="container">
-    <div class="department-btn-container">
-        <a ng-click="navigateToAdd()">{{:: 'ADD_DEPARTMENT_TEXT' |translate }}</a>
-    </div>
+    <a ng-click="navigateToAdd()">{{:: 'ADD_DEPARTMENT_TEXT' | translate }}</a>
 
     <!-- split the view -->
-    <div ui-view="content@viewDeppartments" class="department-content-container"></div>
+    <div ui-view="content@viewDepartments" class="department-content-container"></div>
 </div>
