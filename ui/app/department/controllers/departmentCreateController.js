@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bahmni.department')
-    .controller('DepartmentCreateController', ['$scope', '$state', '$location', 'spinner', 'departmentService'
+    .controller('DepartmentCreateController', ['$scope', '$state', '$location', 'spinner', 'departmentService',
         function ($scope, $state, $location, spinner, departmentService) {
             $scope.department = {};
             
@@ -21,7 +21,7 @@ angular.module('bahmni.department')
 
             // return spinner.forPromise(init());
         }])
-    .controller('DepartmentEditController', ['$scope', '$state', '$location', 'spinner', '$stateParams', 'departmentService'
+    .controller('DepartmentEditController', ['$scope', '$state', '$location', 'spinner', '$stateParams', 'departmentService',
         function ($scope, $state, $location, spinner, $stateParams, departmentService) {
             console.log($stateParams);
             $scope.department = {};
