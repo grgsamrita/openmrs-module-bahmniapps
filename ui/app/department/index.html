@@ -19,11 +19,15 @@
         <!-- endbuild -->
     </head>
     <body>
-        <div ng-app="bahmni.department" class="bahmni-departments">
+        <!-- <div ng-app="bahmni.department" class="bahmni-departments"> -->
             <!-- <div ui-view="additional-header"></div> -->
-            <div ng-include src="'../common/ui-helper/messages.html'"></div>
+            <!-- <div ng-include src="'../common/ui-helper/messages.html'"></div>
             <div ui-view="departmentContent"></div>
-        </div>
+        </div> -->
+        <body ng-app="bahmni.department">
+        <div ng-controller="PopupDemoController">
+<a ng-click="open()">Open Popup</a>
+</div>
         <script src="../components/lodash/dist/lodash.min.js"></script>
         <script src="../components/jquery/jquery.min.js"></script>
         <script src="../components/jquery.cookie/jquery.cookie.js"></script>
@@ -114,8 +118,8 @@
         <script src="../common/logging/services/loggingService.js"></script>
 
         <script src="init.js"></script>
-        <script src="app.js"></script>
-        <script src="initialization.js"></script>
+        <!-- <script src="app.js"></script> -->
+        <!-- <script src="initialization.js"></script> -->
         <script src="services/departmentService.js"></script>
         <script src="controllers/departmentCreateController.js"></script>
         <script src="controllers/departmentListController.js"></script>
