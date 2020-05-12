@@ -41,6 +41,13 @@ angular.module('department')
                 //         return appointmentsInitialization();
                 //     }
                 // }
+            }).state('department.edit', {
+                url: '/edit/:uuid',
+                templateUrl: 'views/departmentsCreate.html',
+                controller: 'DepartmentEditController',
+                data: {
+                    backLinks: [{label: "Home", state: "department.list", icon: "fa-home"}]
+                }
             });
             $httpProvider.defaults.headers.common['Disable-WWW-Authenticate'] = true;
 
