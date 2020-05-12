@@ -5,7 +5,8 @@ angular.module('department', ['httpErrorInterceptor', 'bahmni.department', 'bahm
 angular.module('department')
     .config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$compileProvider', '$bahmniTranslateProvider',
         function ($stateProvider, $httpProvider, $urlRouterProvider, $compileProvider, $bahmniTranslateProvider) {
-            $urlRouterProvider.otherwise('/list');
+            $urlRouterProvider.otherwise('/list/view');
+            $urlRouterProvider.when('/list', '/list/view');
             $stateProvider.state('department', {
                 abstract: true,
                 template: '<ui-view/>',
@@ -27,8 +28,8 @@ angular.module('department')
                 data: {
                     backLinks: [{label: "Home", state: "department.list", icon: "fa-home"}]
                 }
-            }).state('department.list.departments', {
-                url: '/departments',
+            }).state('department.list.view', {
+                url: '/view',
                 views: {
                     'content@viewDepartments': {
                         templateUrl: 'views/departmentsList.html',
