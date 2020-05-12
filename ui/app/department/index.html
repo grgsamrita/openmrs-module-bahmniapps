@@ -8,8 +8,8 @@
         <link rel="stylesheet" href="../components/ngDialog/css/ngDialog.min.css"/>
         <link rel="stylesheet" href="../components/ngDialog/css/ngDialog-theme-default.min.css"/>
         <link rel="stylesheet" href="../components/ngDialog/css/ngDialog-theme-plain.min.css"/>
-        <!-- build:css departments.min.css -->
-        <!-- <link rel="stylesheet" href="../styles/departments.css"> -->
+        <!-- build:css department.min.css -->
+        <!-- <link rel="stylesheet" href="../styles/department.css"> -->
         <link rel="stylesheet" href="../components/fullcalendar/dist/fullcalendar.min.css"/>
         <link rel="stylesheet" href="../components/fullcalendar-scheduler/dist/scheduler.min.css"/>
         <link rel="stylesheet" href="../components/angular-ivh-treeview/dist/ivh-treeview.css"/>
@@ -19,15 +19,15 @@
         <!-- endbuild -->
     </head>
     <body>
-        <!-- <div ng-app="bahmni.department" class="bahmni-departments"> -->
+        <div ng-app="bahmni.department" class="bahmni-department">
             <!-- <div ui-view="additional-header"></div> -->
-            <!-- <div ng-include src="'../common/ui-helper/messages.html'"></div>
+            <div ng-include src="'../common/ui-helper/messages.html'"></div>
             <div ui-view="departmentContent"></div>
-        </div> -->
-        <body ng-app="bahmni.department">
+        </div>
+        <!-- <body ng-app="bahmni.department">
         <div ng-controller="PopupDemoController">
 <a ng-click="open()">Open Popup</a>
-</div>
+</div> -->
         <script src="../components/lodash/dist/lodash.min.js"></script>
         <script src="../components/jquery/jquery.min.js"></script>
         <script src="../components/jquery.cookie/jquery.cookie.js"></script>
@@ -57,7 +57,7 @@
         <script src="../components/angular-ivh-treeview/dist/ivh-treeview.min.js"></script>
         <script src="../lib/angular-workers/dist/angular-workers.js"></script>
 
-        <!-- build:js departments.min.js -->
+        <!-- build:js department.min.js -->
         <script src="../common/constants.js"></script>
 
         <script src="../common/route-errorhandler/init.js"></script>
@@ -118,8 +118,8 @@
         <script src="../common/logging/services/loggingService.js"></script>
 
         <script src="init.js"></script>
-        <!-- <script src="app.js"></script> -->
-        <!-- <script src="initialization.js"></script> -->
+        <script src="app.js"></script>
+        <script src="initialization.js"></script>
         <script src="services/departmentService.js"></script>
         <script src="controllers/departmentCreateController.js"></script>
         <script src="controllers/departmentListController.js"></script>
