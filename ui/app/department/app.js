@@ -32,7 +32,8 @@ angular.module('department')
             $httpProvider.defaults.headers.common['Disable-WWW-Authenticate'] = true;
 
             // this points to the i18n folder for the locale_en.json of the department folder
-            $bahmniTranslateProvider.init({app: 'departments', shouldMerge: true});
+            // here 'department' is the name of the folder that you kept inside i18n.
+            $bahmniTranslateProvider.init({app: 'department', shouldMerge: true});
         }
     ]).run(['$rootScope', '$templateCache', function ($rootScope, $templateCache) {
         // Disable caching view template partials
