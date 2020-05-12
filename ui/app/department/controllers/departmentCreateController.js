@@ -28,7 +28,8 @@ angular.module('bahmni.department')
             if(!depId) {
                 $state.go("department.list.view");
             } else {
-                $scope.getDepartment(depId);            }
+                $scope.getDepartment(depId);            
+            }
             
 
             $scope.getDepartment = function(id) {
