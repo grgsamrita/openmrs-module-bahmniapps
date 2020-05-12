@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('department', ['httpErrorInterceptor', 'bahmni.department', 'bahmni.common.routeErrorHandler', 'ngSanitize',
-    'bahmni.common.uiHelper', 'bahmni.common.config', 'bahmni.common.orders', 'pascalprecht.translate',
+    'bahmni.common.uiHelper', 'bahmni.common.config', 'bahmni.common.orders',
     'ngCookies', , 'bahmni.common.services']);
 angular.module('department')
     .config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$compileProvider', '$bahmniTranslateProvider',
