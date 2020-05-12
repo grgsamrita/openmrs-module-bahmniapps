@@ -33,6 +33,7 @@ angular.module('department')
 
             // this points to the i18n folder for the locale_en.json of the department folder
             // here 'department' is the name of the folder that you kept inside i18n.
+            // shouldMerge merges the locale_en.json files from the local i18n department directory and from the custom i18n directory of the default-config
             $bahmniTranslateProvider.init({app: 'department', shouldMerge: true});
         }
     ]).run(['$rootScope', '$templateCache', function ($rootScope, $templateCache) {
