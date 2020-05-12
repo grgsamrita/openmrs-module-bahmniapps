@@ -49,7 +49,7 @@ angular.module('bahmni.department')
             };
 
             this.delete = function (departmentId) {
-                var deleteUrl = appService.getAppDescriptor().formatUrl(Bahmni.Appointments.Constants.changeAppointmentStatusUrl, {departmentId: departmentId});
+                var deleteUrl = appService.getAppDescriptor().formatUrl(Bahmni.Department.Constants.deleteDepartmentUrl, {departmentId: departmentId});
                 return $http.delete(deleteUrl, {
                     withCredentials: true,
                     headers: {"Accept": "application/json", "Content-Type": "application/json"}
