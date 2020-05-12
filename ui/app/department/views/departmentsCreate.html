@@ -1,6 +1,6 @@
 <div class="container">
 	<a ng-href="#/list/view">Department List</a>
-	<form ng-submit="createDepartment()">
+	<form ng-submit="department && department.id ? updateDepartment() : createDepartment()">
 		<div class="row">
 			<div class="col">
 				<label>Name: </label>

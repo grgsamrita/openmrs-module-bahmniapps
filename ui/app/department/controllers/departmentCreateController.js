@@ -7,7 +7,7 @@ angular.module('bahmni.department')
             
             $scope.createDepartment = function() {
                 departmentService.save($scope.department).then(function (response) {
-                    console.log(response);
+                    console.log("created");
                     $state.go("department.list.view");
                 });
             }
@@ -23,12 +23,23 @@ angular.module('bahmni.department')
         }])
     .controller('DepartmentEditController', ['$scope', '$state', '$location', 'spinner', '$stateParams', 'departmentService',
         function ($scope, $state, $location, spinner, $stateParams, departmentService) {
-            console.log($stateParams);
             $scope.department = {};
+            var depId = $stateParams.uuid;
+            if(!depId) {
+                $state.go("department.list.view");
+            } else {
+                $scope.getDepartment(depId);            }
             
-            $scope.createDepartment = function() {
-                departmentService.save($scope.department).then(function (response) {
-                    console.log(response);
+
+            $scope.getDepartment = function(id) {
+                departmentService.getDepartmentById($stateParams.uuid).then(function (response) {
+                    $scope.department = response.data;
+                });
+            }
+            
+            $scope.updateDepartment = function() {
+                departmentService.update($scope.department).then(function (response) {
+                    console.log("updated");
                     $state.go("department.list.view");
                 });
             }
