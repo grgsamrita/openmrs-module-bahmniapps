@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('department', ['httpErrorInterceptor', 'bahmni.department', 'bahmni.common.routeErrorHandler', 'ngSanitize',
-    'bahmni.common.uiHelper', 'bahmni.common.config', 'bahmni.common.orders',
+    'bahmni.common.uiHelper', 'bahmni.common.config', 'bahmni.common.orders', 'bahmni.common.i18n',
     'ngCookies', , 'bahmni.common.services']);
 angular.module('department')
-    .config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$compileProvider',
-        function ($stateProvider, $httpProvider, $urlRouterProvider, $compileProvider) {
+    .config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$compileProvider', '$bahmniTranslateProvider',
+        function ($stateProvider, $httpProvider, $urlRouterProvider, $compileProvider, $bahmniTranslateProvider) {
             $urlRouterProvider.otherwise('/list');
             $stateProvider.state('department', {
                 abstract: true,
@@ -30,7 +30,9 @@ angular.module('department')
                 }
             });
             $httpProvider.defaults.headers.common['Disable-WWW-Authenticate'] = true;
-            // $bahmniTranslateProvider.init({app: 'department', shouldMerge: true});
+
+            // this points to the i18n folder for the locale_en.json of the department folder
+            $bahmniTranslateProvider.init({app: 'departments', shouldMerge: true});
         }
     ]).run(['$rootScope', '$templateCache', function ($rootScope, $templateCache) {
         // Disable caching view template partials
