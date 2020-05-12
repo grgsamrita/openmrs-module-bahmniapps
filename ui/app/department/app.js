@@ -1,58 +1,38 @@
 'use strict';
 
-angular
-    .module('bahmni.department')
-    .config(['$urlRouterProvider', '$stateProvider', '$httpProvider', '$bahmniTranslateProvider', '$compileProvider',
-        function ($urlRouterProvider, $stateProvider, $httpProvider, $bahmniTranslateProvider, $compileProvider) {
-            $httpProvider.defaults.headers.common['Disable-WWW-Authenticate'] = true;
+angular.module('department', ['httpErrorInterceptor', 'bahmni.department', 'bahmni.common.routeErrorHandler', 'ngSanitize',
+    'bahmni.common.uiHelper', 'bahmni.common.config', 'bahmni.common.orders', 'bahmni.common.i18n', 'pascalprecht.translate',
+    'ngCookies', 'angularFileUpload', 'bahmni.common.services']);
+angular.module('department')
+    .config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$compileProvider', '$bahmniTranslateProvider',
+        function ($stateProvider, $httpProvider, $urlRouterProvider, $compileProvider, $bahmniTranslateProvider) {
             $urlRouterProvider.otherwise('/list');
-        // @if DEBUG='production'
-            $compileProvider.debugInfoEnabled(false);
-        // @endif
-
-        // @if DEBUG='development'
-            $compileProvider.debugInfoEnabled(true);
-        // @endif
-            $stateProvider
-            .state('department', {
-                url: '/department',
+            $stateProvider.state('department', {
                 abstract: true,
-                views: {
-                    // 'additional-header': {
-                    //     templateUrl: 'views/appointmentsHeader.html',
-                    //     controller: 'AppointmentsHeaderController'
-                    // },
-                    'departmentContent': {
-                        template: '<div class="opd-wrapper department-page-wrapper">' +
-                        '<div ui-view="content" class="opd-content-wrapper department-content-wrapper"></div>' +
-                        '</div>'
-                    }
-                },
-                data: {
-                    backLinks: []
-                },
+                template: '<ui-view/>',
                 resolve: {
-                    initializeConfig: function (initialization, $stateParams) {
-                        return initialization($stateParams.appName);
-                    }
-                }
-            }).state('department.create', {
-                url: '/create',
-                views: {
-                    'content': {
-                        templateUrl: 'views/departmentsCeate.html',
-                        controller: 'DepartmentCreateController'
-                    }
+                    initialize: 'initialization'
                 }
             }).state('department.list', {
                 url: '/list',
-                views: {
-                    'content': {
-                        templateUrl: 'views/departmentsList.html',
-                        controller: 'DepartmentListController'
-                    }
+                templateUrl: 'views/departmentsList.html',
+                controller: 'DepartmentListController',
+                data: {
+                    backLinks: [{label: "Home", accessKey: "h", url: "../home/", icon: "fa-home"}],
+                    extensionPointId: 'org.bahmni.department'
+                }
+            }).state('department.create', {
+                url: '/create',
+                templateUrl: 'views/departmentsCreate.html',
+                controller: 'DepartmentCreateController',
+                data: {
+                    backLinks: [{label: "Home", state: "department.list", icon: "fa-home"}]
                 }
             });
-
+            $httpProvider.defaults.headers.common['Disable-WWW-Authenticate'] = true;
             $bahmniTranslateProvider.init({app: 'department', shouldMerge: true});
-        }]);
+        }
+    ]).run(['$rootScope', '$templateCache', function ($rootScope, $templateCache) {
+        // Disable caching view template partials
+        $rootScope.$on('$viewContentLoaded', $templateCache.removeAll);
+    }]);
