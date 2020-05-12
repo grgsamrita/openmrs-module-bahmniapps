@@ -10,6 +10,6 @@ Bahmni.Department.Constants = (function () {
         listDepartmentUrl: hostURL + '/depmodule/departments',
         updateDepartmentUrl: hostURL + '/depmodule/departments',
         getSpecificDepartmentUrl: hostURL + '/depmodule/departments/{{departmentId}}',
-        deleteDepartmentUrl: hostURL + '/depmodule/departments/{{departmentId}}',
+        deleteDepartmentUrl: hostURL + '/depmodule/departments/{{departmentId}}'
     };
 })();

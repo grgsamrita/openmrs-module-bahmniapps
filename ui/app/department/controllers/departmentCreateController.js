@@ -5,12 +5,12 @@ angular.module('bahmni.department')
         function ($scope, $state, $location, spinner, departmentService) {
             $scope.department = {};
             
-            $scope.createDepartment = function() {
+            $scope.createDepartment = function () {
                 departmentService.save($scope.department).then(function (response) {
                     console.log("created");
                     $state.go("department.list.view");
                 });
-            }
+            };
             // var init = function () {
             //     // return appointmentsServiceService.getAllServices().then(function (response) {
             //     //     $scope.appointmentServices = response.data;
@@ -25,25 +25,24 @@ angular.module('bahmni.department')
         function ($scope, $state, $location, spinner, $stateParams, departmentService) {
             $scope.department = {};
             var depId = $stateParams.uuid;
-            if(!depId) {
+            if (!depId) {
                 $state.go("department.list.view");
             } else {
                 $scope.getDepartment(depId);            
-            }
-            
+            }            
 
-            $scope.getDepartment = function(id) {
+            $scope.getDepartment = function (id) {
                 departmentService.getDepartmentById($stateParams.uuid).then(function (response) {
                     $scope.department = response.data;
                 });
-            }
+            };
             
-            $scope.updateDepartment = function() {
+            $scope.updateDepartment = function () {
                 departmentService.update($scope.department).then(function (response) {
                     console.log("updated");
                     $state.go("department.list.view");
                 });
-            }
+            };
             // var init = function () {
             //     // return appointmentsServiceService.getAllServices().then(function (response) {
             //     //     $scope.appointmentServices = response.data;
