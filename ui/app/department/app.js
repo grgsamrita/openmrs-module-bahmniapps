@@ -28,7 +28,7 @@ angular.module('department')
                     backLinks: [{label: "Home", state: "department.list", icon: "fa-home"}]
                 }
             }).state('department.list.departments', {
-                url: '/list/departments',
+                url: '/departments',
                 views: {
                     'content@viewDepartments': {
                         templateUrl: 'views/departmentsList.html',
