@@ -3,5 +3,7 @@
 	"ADD_DEPARTMENT_TEXT": "Add a new department",
 	"DEPARTMENT_ID": "Department UUID",
 	"DEP_NAME": "Name",
-	"DEP_DESCRIPTION": "Description"
+	"DEP_DESCRIPTION": "Description",
+	"MESSAGE_DIALOG_OPTION_COPY" : "Copy Error",
+    "MESSAGE_DIALOG_OPTION_OKAY": "OK"
 }
