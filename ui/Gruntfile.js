@@ -404,6 +404,12 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: '<%= yeoman.dist %>',
+                        src: ['bedmanagement.*.css'],
+                        dest: '<%= yeoman.dist %>/bedmanagement/'
+                    },
+                    {
+                        expand: true,
+                        cwd: '<%= yeoman.dist %>',
                         src: ['orders.*.css'],
                         dest: '<%= yeoman.dist %>/orders/'
                     },
