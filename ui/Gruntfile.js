@@ -347,13 +347,6 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: '<%= yeoman.dist %>',
-                        src: ['bedmanagement.*.js'],
-                        dest: '<%= yeoman.dist %>/bedmanagement/'
-                    },
-                    {expand: true, cwd: '<%= yeoman.dist %>', src: ['home.*.js'], dest: '<%= yeoman.dist %>/home/'},
-                    {
-                        expand: true,
-                        cwd: '<%= yeoman.dist %>',
                         src: ['admin.*.js'],
                         dest: '<%= yeoman.dist %>/admin/'
                     },
@@ -391,6 +384,12 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: '<%= yeoman.dist %>',
+                        src: ['bedmanagement.*.js'],
+                        dest: '<%= yeoman.dist %>/bedmanagement/'
+                    },
+                    {
+                        expand: true,
+                        cwd: '<%= yeoman.dist %>',
                         src: ['patients.min.*.css'],
                         dest: '<%= yeoman.dist %>/patients/'
                     },
@@ -401,12 +400,6 @@ module.exports = function (grunt) {
                         dest: '<%= yeoman.dist %>/clinical/'
                     },
                     {expand: true, cwd: '<%= yeoman.dist %>', src: ['adt.*.css'], dest: '<%= yeoman.dist %>/adt/'},
-                    {
-                        expand: true,
-                        cwd: '<%= yeoman.dist %>',
-                        src: ['bedmanagement.*.css'],
-                        dest: '<%= yeoman.dist %>/bedmanagement/'
-                    },
                     {
                         expand: true,
                         cwd: '<%= yeoman.dist %>',
@@ -454,6 +447,12 @@ module.exports = function (grunt) {
                         cwd: '<%= yeoman.dist %>',
                         src: ['department.*.css'],
                         dest: '<%= yeoman.dist %>/department/'
+                    },
+                    {
+                        expand: true,
+                        cwd: '<%= yeoman.dist %>',
+                        src: ['bedmanagement.*.css'],
+                        dest: '<%= yeoman.dist %>/bedmanagement/'
                     }
                 ]
             }
