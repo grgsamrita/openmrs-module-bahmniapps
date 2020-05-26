@@ -7,7 +7,6 @@ angular.module('bahmni.ipd')
                 $scope.defaultTags = ['AVAILABLE', 'OCCUPIED'];
                 var appDescriptor = appService.getAppDescriptor();
                 $rootScope.bedTagsColorConfig = appDescriptor.getConfigValue("colorForTags") || [];
-                console.log($rootScope.bedTagsColorConfig);
                 $rootScope.currentView = $rootScope.currentView || "Grid";
                 $scope.showPrintIcon = appDescriptor.getConfigValue("wardListPrintEnabled") || false;
                 $scope.currentView = $rootScope.currentView;
