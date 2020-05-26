@@ -58,6 +58,7 @@ angular.module('bahmni.ipd').controller('editTagsController', ['$scope', '$rootS
         };
 
         $scope.removeItem = function (item) {
+            console.log(item);
             var find = _.find(assignedTags, {uuid: item.uuid});
             var itemList = find ? [find] : [];
             deltaDeSelected = _.xorBy(deltaDeSelected, itemList, 'uuid');
