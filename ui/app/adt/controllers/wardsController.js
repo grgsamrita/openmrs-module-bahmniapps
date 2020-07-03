@@ -17,7 +17,7 @@ angular.module('bahmni.adt')
                     $scope.wards = _.filter(wardsList.results, function(result) { 
                         console.log(result)
                         console.log(result.ward.parentLocation)
-                        console.log($rootScope.visitLocationUuid)
+                        console.log($rootScope)
 
                         // result.ward.parentLocation && result.ward.parentLocation.uuid == $scope.$root.visitLocationUuid
                         });
