@@ -11,10 +11,11 @@ angular.module('bahmni.adt')
 
             var loadAllWards = function () {
                 return wardService.getWardsList().success(function (wardsList) {
-                    // $scope.wards = wardsList.results;
+                    $scope.wards = wardsList.results;
 
-                    console.log(`laxmi's customisation`);
-                    $scope.wards = _.filter(wardsList.results, function(result) { return (result.ward.parentLocation.uuid == $scope.$root.visitLocationUuid) });
+                    // console.log(`laxmi's customisation`);
+                    // $scope.wards = _.filter(wardsList.results, function(result) { return (
+                    //     result.ward.parentLocation && result.ward.parentLocation.uuid == $scope.$root.visitLocationUuid) });
                 });
             };
             spinner.forPromise(init());
