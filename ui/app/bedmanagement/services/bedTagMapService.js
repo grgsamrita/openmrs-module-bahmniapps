@@ -19,7 +19,6 @@ angular.module('bahmni.ipd')
         };
 
         this.unAssignTagFromTheBed = function (bedTagMapUuid) {
-            console.log(bedTagMapUuid);
             return $http.delete(Bahmni.IPD.Constants.bedTagMapUrl + bedTagMapUuid);
         };
     }]);

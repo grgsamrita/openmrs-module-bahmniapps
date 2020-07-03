@@ -21,7 +21,11 @@ angular.module('bahmni.adt')
 
             var loadAllWards = function () {
                 spinner.forPromise(wardService.getWardsList().success(function (wardsList) {
-                    $scope.wards = wardsList.results;
+                    // $scope.wards = wardsList.results; // old code
+
+                    // show ward list as per the location visited
+                    console.log(`laxmi's customisation`);
+                    $scope.wards = _.filter(wardsList.results, function(result) { return (result.ward.parentLocation.uuid == $scope.$root.visitLocationUuid) });
                 }));
             };
 
