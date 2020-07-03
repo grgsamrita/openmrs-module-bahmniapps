@@ -17,13 +17,15 @@ angular.module('bahmni.adt')
 
             var loadAllWards = function () {
                 return wardService.getWardsList().success(function (wardsList) {
+                    // actual code
                     $scope.wards = wardsList.results;
 
-                    console.log(`laxmi's customisation`);
-                    $scope.wards = _.filter(wardsList.results, function(result) { return (
+                    // ---- show wards and beds as per location
+                    // console.log(`laxmi's customisation`);
+                    // $scope.wards = _.filter(wardsList.results, function(result) { return (
 
-                        result.ward.parentLocation !== null && result.ward.parentLocation.uuid == loginLocationUuid
-                    )});
+                    //     result.ward.parentLocation !== null && result.ward.parentLocation.uuid == loginLocationUuid
+                    // )});
                 });
             };
             spinner.forPromise(init());
