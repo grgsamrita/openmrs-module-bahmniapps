@@ -20,13 +20,10 @@ angular.module('bahmni.adt')
                     $scope.wards = wardsList.results;
 
                     console.log(`laxmi's customisation`);
-                    $scope.wards = _.filter(wardsList.results, function(result) { 
-                        console.log(result)
-                        console.log(result.ward.parentLocation)
-                        console.log(loginLocationUuid)
+                    $scope.wards = _.filter(wardsList.results, function(result) { return (
 
-                        // result.ward.parentLocation && result.ward.parentLocation.uuid == $scope.$root.visitLocationUuid
-                        });
+                        result.ward.parentLocation !== null && result.ward.parentLocation.uuid == loginLocationUuid
+                    )});
                 });
             };
             spinner.forPromise(init());
