@@ -15,9 +15,9 @@ angular.module('bahmni.adt')
 
                     console.log(`laxmi's customisation`);
                     $scope.wards = _.filter(wardsList.results, function(result) { return (
-                        console.log(result);
+                        // console.log(result);
                         console.log('parent: ', result.ward.parentLocation);
-                        console.log('visit: ', $scope.$root.visitLocationUuid);
+                        // console.log('visit: ', $scope.$root.visitLocationUuid);
 
                         // result.ward.parentLocation && result.ward.parentLocation.uuid == $scope.$root.visitLocationUuid
                         ) });
