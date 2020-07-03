@@ -25,7 +25,8 @@ angular.module('bahmni.adt')
 
                     // show ward list as per the location visited
                     console.log(`laxmi's customisation`);
-                    $scope.wards = _.filter(wardsList.results, function(result) { return (result.ward.parentLocation.uuid == $scope.$root.visitLocationUuid) });
+                    $scope.wards = _.filter(wardsList.results, function(result) { return (
+                        result.ward.parentLocation && result.ward.parentLocation.uuid == $scope.$root.visitLocationUuid) });
                 }));
             };
 
