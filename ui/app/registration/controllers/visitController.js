@@ -139,6 +139,7 @@ angular.module('bahmni.registration')
             $scope.closeVisitIfDischarged = function () {
                 visitService.getVisitSummary(vm.visitUuid).then(function (response) {
                     var visitSummary = response.data;
+                    // laxmi need to see here
                     if (visitSummary.admissionDetails && !visitSummary.dischargeDetails) {
                         messagingService.showMessage("error", 'REGISTRATION_VISIT_CANNOT_BE_CLOSED');
                         var messageParams = {visitUuid: vm.visitUuid, visitType: visitSummary.visitType};
